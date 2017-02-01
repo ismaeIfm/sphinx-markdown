@@ -1,4 +1,4 @@
-
+from __future__ import unicode_literals
 import os
 
 from docutils import nodes
@@ -17,9 +17,9 @@ class MarkdownNode(nodes.raw, nodes.Element):
     def load_markdown(self):
         """Save the markdown contents to this node
         """
-        with open(self.filename) as handle:
+        with open(self.filename, encoding='utf-8') as handle:
             handle.readline()
-            text = unicode(handle.read().decode('utf-8'))
+            text = handle.read()
         static_dir = os.path.relpath('_static',
                                      start=os.path.dirname(self.filename))
         sphinx_md_ext = StaticImagesExtension(static_dir=static_dir)

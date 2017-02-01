@@ -43,5 +43,5 @@ def handle_page_context_html(app, pagename_, templatename_, context, doctree):
     nodetext = re.sub(r'(?is)<script.*?</script>', '', nodetext)
     nodetext = re.sub(r'<[^<]+?>', '', nodetext)
     nodetext = re.sub(r'&[^ ;]+?;', '', nodetext)
-    with open(outname, 'w') as writer:
-        writer.write(nodetext.encode('ascii', 'ignore'))
+    with open(outname, 'w', encoding='utf-8') as writer:
+        writer.write(nodetext)
